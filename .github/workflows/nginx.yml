@@ -7,7 +7,7 @@ on:
     branches:
       - main
     paths:
-      - arm/**
+      - Nginx/**
 jobs:
   push:
     name: "pterodactyl-images:nginx_${{ matrix.tag }}"
@@ -31,8 +31,8 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - uses: docker/build-push-action@v2
         with:
-          context: ./nginx
-          file: ./nginx/${{ matrix.tag }}/Dockerfile
+          context: ./Nginx
+          file: ./Nginx/${{ matrix.tag }}/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
