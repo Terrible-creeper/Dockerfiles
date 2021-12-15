@@ -1,12 +1,15 @@
-FROM arm64v8/nginx
+FROM ubuntu:20.04
 
-RUN apt-get update
+RUN apt-get update -y
+RUN apt-get install -y nginx
 
-COPY static-html-directory /usr/share/nginx/html
-
-USER container
 ENV USER=container HOME=/home/container
+USER container
 WORKDIR /home/container
+RUN mkdir /home/container/html
+RUN echo "Nginx" >> index.html
+
+COPY ../nginx.conf /home/container
 
 ADD ./entrypoint.sh /entrypoint.sh
 CMD [ "/bin/bash", "/entrypoint.sh" ]
