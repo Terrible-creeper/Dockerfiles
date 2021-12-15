@@ -11,5 +11,5 @@ RUN echo "Nginx" >> index.html
 
 COPY ../nginx.conf /home/container
 
-ADD ./entrypoint.sh /entrypoint.sh
+ADD ../entrypoint.sh /entrypoint.sh
 CMD [ "/bin/bash", "/entrypoint.sh" ]
