@@ -1,2 +1,0 @@
-# Dockerfiles
-Dockerfiles for Pterodactyl
