@@ -10,7 +10,7 @@ on:
       - MariaDB/**
 jobs:
   push:
-    name: "pterodactyl-images:mariadb_${{ matrix.tag }}_${{ matrix.version }}"
+    name: "pterodactyl-images:mariadb_${{ matrix.tag }}:${{ matrix.version }}"
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -34,8 +34,8 @@ jobs:
       - uses: docker/build-push-action@v2
         with:
           context: ./MariaDB
-          file: ./MariaDB/${{ matrix.tag }}/${{ matrix.version }}/Dockerfile
+          file: ./MariaDB/${{ matrix.version }}/${{ matrix.tag }}/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            ghcr.io/terrible-creeper/pterodactyl-images:nginx_${{ matrix.tag }}_${{ matrix.version }}
+            ghcr.io/terrible-creeper/pterodactyl-images:nginx_${{ matrix.tag }}:${{ matrix.version }}
