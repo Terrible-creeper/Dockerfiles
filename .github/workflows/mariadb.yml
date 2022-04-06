@@ -16,7 +16,7 @@ jobs:
       fail-fast: false
       matrix:
         tag:
-          - arm64
+          - ARM64
         version:
           - 10.7
     steps:
