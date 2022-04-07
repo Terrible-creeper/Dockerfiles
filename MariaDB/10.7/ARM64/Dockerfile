@@ -2,7 +2,7 @@
 # MariaDB Image for Pterodactyl
 # ARM64v8
 # -----------------------------------------------------
-FROM        --platform=$TARGETOS/$TARGETARCH mariadb:10.7
+FROM        --platform=$TARGETOS/$TARGETARCH mariadb:10.3
 
 LABEL       author="Michael Parker" maintainer="parker@pterodactyl.io"
 
