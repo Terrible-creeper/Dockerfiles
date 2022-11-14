@@ -2,7 +2,7 @@ FROM arm64v8/ubuntu:20.04
 
 RUN apt update
 RUN apt install -y ca-certificates nginx vim sudo
-RUN apt install -y php7.4 php7.4-fpm php7.4-mysql php-common php7.4-cli php7.4-common php7.4-json php7.4-opcache php7.4-readline php7.4-mbstring php7.4-xml php7.4-gd php7.4-curl
+RUN apt -y install php8.1 php8.1-{common,cli,gd,mysql,mbstring,bcmath,xml,fpm,curl,zip,json,opcache,readline}
 RUN useradd -m -d /home/container container
 
 USER container
