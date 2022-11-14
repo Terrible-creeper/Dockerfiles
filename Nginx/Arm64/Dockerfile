@@ -1,6 +1,5 @@
-FROM arm64v8/ubuntu:20.04
+FROM arm64v8/ubuntu:22.04
 
-RUN LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
 RUN apt update
 RUN apt install -y ca-certificates nginx vim sudo
 RUN apt install -y php8.1 php8.1-common php8.1-cli php8.1-gd php8.1-mysql php8.1-mbstring php8.1-bcmath php8.1-xml php8.1-fpm php8.1-curl php8.1-zip php8.1-json php8.1-opcache php8.1-readline
