@@ -21,17 +21,17 @@ jobs:
           - 8.1.0
     steps:
       - uses: actions/checkout@v3
-      - uses: docker/setup-qemu-action@v1
-      - uses: docker/setup-buildx-action@v1
+      - uses: docker/setup-qemu-action@v3
+      - uses: docker/setup-buildx-action@v3
         with:
           version: "v0.5.1"
           buildkitd-flags: --debug
-      - uses: docker/login-action@v1
+      - uses: docker/login-action@v3
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - uses: docker/build-push-action@v2
+      - uses: docker/build-push-action@v5
         with:
           context: ./mySQL
           file: ./mySQL/${{ matrix.tag }}/${{ matrix.version }}/Dockerfile
