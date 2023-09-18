@@ -2,7 +2,7 @@
 # mySQL Image for Pterodactyl
 # ARM64v8
 # -----------------------------------------------------
-FROM        arm64v8/mysql:8.1.0
+FROM arm64v8/ubuntu:22.04
 
 LABEL       author="Terrible_creeper" maintainer="creeper5620@gmail.com"
 
