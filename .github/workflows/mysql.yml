@@ -10,15 +10,13 @@ on:
       - Nginx/**
 jobs:
   push:
-    name: "pterodactyl-images:mysql_${{ matrix.tag }}_${{ matrix.version }}"
+    name: "pterodactyl-images:mysql_${{ matrix.tag }}"
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
         tag:
           - ARM64v8
-        version:
-          - 8.1.0
     steps:
       - uses: actions/checkout@v3
       - uses: docker/setup-qemu-action@v3
@@ -34,8 +32,8 @@ jobs:
       - uses: docker/build-push-action@v5
         with:
           context: ./mySQL
-          file: ./mySQL/${{ matrix.tag }}/${{ matrix.version }}/Dockerfile
+          file: ./mySQL/${{ matrix.tag }}/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            ghcr.io/terrible-creeper/pterodactyl-images:mysql_${{ matrix.tag }}_${{ matrix.version }}
+            ghcr.io/terrible-creeper/pterodactyl-images:mysql_${{ matrix.tag }}
