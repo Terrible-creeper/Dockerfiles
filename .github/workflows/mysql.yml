@@ -1,0 +1,41 @@
+name: build mysql
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * 1"
+  push:
+    branches:
+      - main
+    paths:
+      - Nginx/**
+jobs:
+  push:
+    name: "pterodactyl-images:mysql_${{ matrix.tag }}_${{ matrix.version }}"
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        tag:
+          - Arm64
+        version:
+          - 8.1.0
+    steps:
+      - uses: actions/checkout@v3
+      - uses: docker/setup-qemu-action@v1
+      - uses: docker/setup-buildx-action@v1
+        with:
+          version: "v0.5.1"
+          buildkitd-flags: --debug
+      - uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - uses: docker/build-push-action@v2
+        with:
+          context: ./mySQL
+          file: ./mySQL/${{ matrix.tag }}/${{ matrix.version }}/Dockerfile
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: |
+            ghcr.io/terrible-creeper/pterodactyl-images:mysql_${{ matrix.tag }}_${{ matrix.version }}
