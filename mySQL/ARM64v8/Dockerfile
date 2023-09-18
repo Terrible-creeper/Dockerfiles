@@ -11,7 +11,7 @@ ENV         TZ=Etc/UTC
 
 RUN         apt update
 RUN         apt install -y netcat mysql-server
-RUN         chmod 777 /var/log/mysql
+RUN         chmod -R 777 /var/log/mysql
 RUN         useradd -d /home/container -m container -s /bin/bash
 
 USER        container
