@@ -16,7 +16,7 @@ jobs:
       fail-fast: false
       matrix:
         tag:
-          - Arm64
+          - ARM64v8
         version:
           - 8.1.0
     steps:
