@@ -6,9 +6,10 @@ FROM        arm64v8/mysql:8.1.0
 
 LABEL       author="Terrible_creeper" maintainer="creeper5620@gmail.com"
 
-ENV         DEBIAN_FRONTEND noninteractive
+ARG         DEBIAN_FRONTEND=noninteractive
+ENV         TZ=Etc/UTC
 
-RUN         apt update -y
+RUN         apt update
 RUN         apt install -y netcat
 RUN         useradd -d /home/container -m container -s /bin/bash
 
