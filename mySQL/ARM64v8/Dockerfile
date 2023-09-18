@@ -12,10 +12,10 @@ ENV         TZ=Etc/UTC
 RUN         apt update
 RUN         apt install -y netcat mysql-server
 RUN         useradd -d /home/container -m container -s /bin/bash
-RUN         mkdir /var/log/mysql && chmod 777 /var/log/mysql
 
 USER        container
 ENV         USER=container HOME=/home/container
+RUN         mkdir /var/log/mysql && chmod 777 /var/log/mysql
 WORKDIR     /home/container
 
 COPY        ../../entrypoint.sh /entrypoint.sh
