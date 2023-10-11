@@ -2,7 +2,7 @@
 # mySQL Image for Pterodactyl
 # ARM64v8
 # -----------------------------------------------------
-FROM        arm64v8/ubuntu:22.04
+FROM        arm64v8/mariadb:latest
 
 LABEL       author="Terrible_creeper" maintainer="creeper5620@gmail.com"
 
@@ -10,8 +10,7 @@ ARG         DEBIAN_FRONTEND=noninteractive
 ENV         TZ=Etc/UTC
 
 RUN         apt update
-RUN         apt install -y netcat mariadb-server
-RUN         echo '!includedir /etc/mysql/mariadb.conf.d/' >> /etc/mysql/mariadb.cnf
+RUN         apt install -y curl netcat
 RUN         useradd -d /home/container -m container -s /bin/bash
 
 USER        container
