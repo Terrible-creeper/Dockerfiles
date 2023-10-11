@@ -10,7 +10,7 @@ ARG         DEBIAN_FRONTEND=noninteractive
 ENV         TZ=Etc/UTC
 
 RUN         apt update
-RUN         apt install -y netcat php8.1 php8.1-{common,cli,gd,mysql,mbstring,bcmath,xml,fpm,curl,zip} mariadb-server tar unzip git redis-server
+RUN         apt install -y netcat mariadb-server
 RUN         useradd -d /home/container -m container -s /bin/bash
 
 USER        container
