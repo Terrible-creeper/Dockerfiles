@@ -11,6 +11,7 @@ ENV         TZ=Etc/UTC
 
 RUN         apt update
 RUN         apt install -y netcat mariadb-server
+RUN         echo '!includedir /etc/mysql/mariadb.conf.d/' >> /etc/mysql/mariadb.cnf
 RUN         useradd -d /home/container -m container -s /bin/bash
 
 USER        container
